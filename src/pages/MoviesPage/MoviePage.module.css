@@ -1,0 +1,16 @@
+.moviesPage {
+  text-align: start;
+  padding: 20px;
+}
+
+.searchForm {
+  margin-bottom: 20px;
+}
+
+.searchForm input {
+  padding: 10px;
+  font-size: 1em;
+}
+
+.searchForm button {
+}
