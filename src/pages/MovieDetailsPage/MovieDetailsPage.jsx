@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import css from "./MovieDetailsPage.module.css";
 import React, { Suspense, useEffect, useRef, useState } from "react";
-import { featchMovieDetails, getImageUrl } from "../../Api/Api";
+import { fetchMovieDetails, getImageUrl } from "../../Api/Api";
 
 const MovieCast = React.lazy(() =>
   import("../../components/MovieCast/MovieCast")
@@ -28,7 +28,7 @@ const MovieDetailsPage = () => {
 
   useEffect(() => {
     const getMovieDetails = async () => {
-      const movieData = await featchMovieDetails(movieId);
+      const movieData = await fetchMovieDetails(movieId);
       setMovie(movieData);
     };
 

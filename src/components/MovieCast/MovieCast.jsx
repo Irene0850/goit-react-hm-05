@@ -1,36 +1,44 @@
 import { useEffect, useState } from "react";
 import css from "./MovieCast.module.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { featchMovieCredits, getImageUrl } from "../../Api/Api";
+import { fetchMovieCredits, getImageUrl } from "../../Api/Api";
 
 const MovieCast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     const getCast = async () => {
+      setLoading(true);
       try {
-        const castData = await featchMovieCredits(movieId);
+        const castData = await fetchMovieCredits(movieId);
         setCast(castData);
       } catch (error) {
         console.error("Error fetching movie cast:", error);
         setError("Failed to featch cast information. Please try again later.");
         setCast([]);
+      } finally {
+        setLoading(false);
       }
     };
 
     getCast();
   }, [movieId]);
 
+  if (loading) {
+    return <p>Loading cast...</p>;
+  }
+
   if (error) {
     return <p>{error}</p>;
   }
 
   if (cast.length === 0) {
-    return null;
+    return <p>No cast information available.</p>;
   }
 
   return (

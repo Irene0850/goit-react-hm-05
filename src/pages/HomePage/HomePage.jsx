@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { featchTrendingMovies } from "../../Api/Api";
+import { fetchTrendingMovies } from "../../Api/Api";
 import css from "./HomePage.module.css";
 import MovieList from "../../components/MovieList/MovieList";
 
@@ -8,7 +8,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const getMovies = async () => {
-      const trendingMovies = await featchTrendingMovies();
+      const trendingMovies = await fetchTrendingMovies();
       setMovies(trendingMovies);
     };
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { featchMovieReviews } from "../../Api/Api";
+import { fetchMovieReviews } from "../../Api/Api";
 
 const MovieReviews = ({ initialReviews }) => {
   const { movieId } = useParams();
@@ -8,7 +8,7 @@ const MovieReviews = ({ initialReviews }) => {
 
   useEffect(() => {
     const getReviews = async () => {
-      const reviewsData = await featchMovieReviews(movieId);
+      const reviewsData = await fetchMovieReviews(movieId);
       setReviews(reviewsData);
     };
 
