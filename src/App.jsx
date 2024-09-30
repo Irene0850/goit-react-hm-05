@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { Suspense, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+const HomePage = React.lazy(() => import("./pages/HomePages/HomePage"));
 
+const MoviesPage = React.lazy(() => import("./pages/MoviesPage/MoviePage"));
+
+const MovieDetailsPage = React.lazy(() =>
+  import("./pages/MovieDetailsPage/MovieDetailsPage")
+);
+
+const NotFoundPage = React.lazy(() =>
+  import("./pages/NotFoundPage/NotFoundPage")
+);
+
+const Navigation = React.lazy(() =>
+  import("./components/Navigation/Navigation")
+);
+
+const MovieCast = React.lazy(() =>
+  import("./components/MovieCast / MovieCast")
+);
+
+const MovieReviews = React.lazy(() =>
+  import("./components/MovieReviews/MovieReviews")
+);
+
+const App = () => {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Navigation />
+      </Suspense>
+      <Suspense>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:moviId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="revies" element={<MovieReviews />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
