@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_KEY =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjODY5NTgyYzk2ZjdkZTkzMzczZTgwYzgyMzVmM2ViZSIsIm5iZiI6MTcyNzcyMTU0Ni42NjMzMjMsInN1YiI6IjY2ZmFlZDdlM2EwZjVhMDhjOGYxYTEwOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XpoBeBne8LrrvZhAGsUtOGsSRk4GgKyyNHY7g3okaVg";
-const BASE_URL = "https://api.themoviedb.org/3";
+const BASE_URL = "https://api.themoviedb.org/";
 
 const options = {
   headers: {
@@ -50,4 +50,4 @@ export const fetchMovieReviews = async (movieId) => {
   return response.data.results;
 };
 
-export const getImageUrl = (path) => `http://image.tmdb.org/t/p/w500${path}`;
+export const getImageUrl = (path) => `https://image.tmdb.org/t/p/w500${path}`;

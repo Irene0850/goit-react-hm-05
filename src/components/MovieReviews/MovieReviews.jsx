@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { fetchMovieReviews } from "../../Api/Api";
+
+import { useState, useEffect } from "react";
+
+import { useParams } from "react-router-dom";
 
 const MovieReviews = ({ initialReviews }) => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(initialReviews || []);
-
   useEffect(() => {
     const getReviews = async () => {
       const reviewsData = await fetchMovieReviews(movieId);
@@ -16,7 +17,6 @@ const MovieReviews = ({ initialReviews }) => {
       getReviews();
     }
   }, [movieId, initialReviews]);
-
   return (
     <div>
       {reviews.length > 0 ? (

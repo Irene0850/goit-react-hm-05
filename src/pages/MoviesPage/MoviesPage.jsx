@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
-import css from "./MoviePage.module.css";
+import { useState, useEffect } from "react";
+
 import { useSearchParams } from "react-router-dom";
-import { searchMovies } from "../../Api/Api";
+
 import MovieList from "../../components/MovieList/MovieList";
 
-const MoviePage = () => {
+import { searchMovies } from "../../Api/Api";
+
+import css from "./MoviePage.module.css";
+
+const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
@@ -42,4 +46,4 @@ const MoviePage = () => {
   );
 };
 
-export default MoviePage;
+export default MoviesPage;

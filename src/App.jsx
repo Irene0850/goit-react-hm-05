@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+
+import { Routes, Route } from "react-router-dom";
 
 const HomePage = React.lazy(() => import("./pages/HomePage/HomePage"));
 
@@ -16,7 +17,6 @@ const NotFoundPage = React.lazy(() =>
 const Navigation = React.lazy(() =>
   import("./components/Navigation/Navigation")
 );
-
 const MovieCast = React.lazy(() => import("./components/MovieCast/MovieCast"));
 
 const MovieReviews = React.lazy(() =>

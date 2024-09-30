@@ -1,20 +1,20 @@
+import React, { useState, useEffect, Suspense, useRef } from "react";
 import {
-  Link,
-  Outlet,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
   useParams,
+  Link,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+  Outlet,
 } from "react-router-dom";
-import css from "./MovieDetailsPage.module.css";
-import React, { Suspense, useEffect, useRef, useState } from "react";
 import { fetchMovieDetails, getImageUrl } from "../../Api/Api";
+
+import css from "./MovieDetailsPage.module.css";
 
 const MovieCast = React.lazy(() =>
   import("../../components/MovieCast/MovieCast")
 );
-
 const MovieReviews = React.lazy(() =>
   import("../../components/MovieReviews/MovieReviews")
 );
@@ -46,7 +46,6 @@ const MovieDetailsPage = () => {
   if (!movie) {
     return <p>Loading...</p>;
   }
-
   const userScore = (movie.vote_average * 10).toFixed(0);
 
   return (
@@ -61,7 +60,7 @@ const MovieDetailsPage = () => {
           <p>User Score: {userScore}%</p>
           <h2>Overview</h2>
           <p>{movie.overview}</p>
-          <p>Genres: {movie.genres.map((genre) => genre.name).join(",")}</p>
+          <p>Genres: {movie.genres.map((genre) => genre.name).join(", ")}</p>
         </div>
       </div>
       <h3>Additional information</h3>
