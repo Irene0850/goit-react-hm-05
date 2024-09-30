@@ -42,7 +42,7 @@ const MovieCast = () => {
   }
 
   return (
-    <div className={css.movieCastBox}>
+    <div>
       <ul className={css.castList}>
         {cast.map((actor) => (
           <li key={actor.id} className={css.castItem}>
